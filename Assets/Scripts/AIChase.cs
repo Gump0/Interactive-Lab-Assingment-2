@@ -8,8 +8,9 @@ public class AIChase : MonoBehaviour
     public Rigidbody2D body;
     public GameObject Player;
     public float enemySpeed;
+    public float addPerSecond; 
+    public float currentEnemySpeed;
     private float distance;
-
     public bool zergFacingRight;
     void Awake()
     {
@@ -27,7 +28,10 @@ public class AIChase : MonoBehaviour
        distance = Vector2.Distance(transform.position, Player.transform.position);
        Vector2 direction = Player.transform.position - transform.position;
 
-       transform.position = Vector2.MoveTowards(this.transform.position, Player.transform.position, enemySpeed * Time.deltaTime);
+       currentEnemySpeed = enemySpeed + addPerSecond; // Adds increased value to 'currentEnemySpeed' and stores the value
+
+       transform.position = Vector2.MoveTowards(this.transform.position, Player.transform.position, currentEnemySpeed * Time.deltaTime); // Moves the enemy towards the player and utlizes the increased 'currentEnemySpeed' value
+
+       enemySpeed += addPerSecond * Time.deltaTime; // Increases the float value of 'enemySpeed' over time
     }
-    public static GameObject thingonstage;
 }

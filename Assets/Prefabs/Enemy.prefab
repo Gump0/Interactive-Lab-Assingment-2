@@ -147,7 +147,7 @@ Animator:
   m_GameObject: {fileID: 6650836825584246569}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd35a0a39f1f416f291a421adf0dc935, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -200,4 +200,6 @@ MonoBehaviour:
   body: {fileID: -9085255924880212241}
   Player: {fileID: 7718471987229505373, guid: 18ef7762bce1a0b248d9f3c88abc373f, type: 3}
   enemySpeed: 2
+  addPerSecond: 1
+  currentEnemySpeed: 2
   zergFacingRight: 0

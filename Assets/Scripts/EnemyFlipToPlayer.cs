@@ -10,13 +10,13 @@ public class EnemyFlipToPlayer : MonoBehaviour
     public Transform Player;
    public void Awake()
     {
-        this.spriteRenderer = this.GetComponent<SpriteRenderer>();
+        this.spriteRenderer = this.GetComponent<SpriteRenderer>(); // Grabs the sprite renderer of the enemy
 
-        /*Player = Player.transform.Find("Player");*/
+        Player = GameObject.Find("Player").transform; // Grabs the current location of the player
     }
 
     public void Update()
     {
-        this.spriteRenderer.flipX = Player.transform.position.x < this.transform.position.x;
+        this.spriteRenderer.flipX = Player.transform.position.x < this.transform.position.x; // Simply fli[ps the spire depending on the location of the player relative to the enemies position
     }
 }

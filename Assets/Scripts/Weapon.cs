@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
     public GameObject projectilePrefab;
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1")) // Spawns or 'Fires' a bullet prefab if the left mouse button is pushed
         {
             Shoot();
         }
@@ -17,6 +17,6 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
-        Instantiate(projectilePrefab, MuzzlePoint.position, MuzzlePoint.rotation);
+        Instantiate(projectilePrefab, MuzzlePoint.position, MuzzlePoint.rotation); // Simply makes bullet move depending on the transform of the 'muzzlepoint' and fires from the players relative postion
     }
 }

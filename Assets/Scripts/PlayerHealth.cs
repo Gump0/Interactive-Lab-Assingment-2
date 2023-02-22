@@ -5,24 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHP = 3;
-    public int currentHP;
+    public int maxHP = 3; // Stores highest possible HP player can yield
+    public int currentHP; // Stores the players current HP
 
-    public HealthBar healthBar;
+    public HealthBar healthBar; // Referance used for the healthbar UI element
  
     void Awake()
     {
-        currentHP = maxHP;
+        currentHP = maxHP; // Always sets player HP to max whenever the game is reset
 
-        healthBar.SetHealth(currentHP);
+        healthBar.SetHealth(currentHP); // Healthbar stuff
     }
-    public void PlayerTakeDamage(int damage)
+    public void PlayerTakeDamage(int damage) // Function that determines how the player takes damage
     {
         currentHP -= damage;
         healthBar.SetHealth(currentHP);
         if(currentHP <= 0)
         {
-            SceneManager.LoadScene("GameOverScene");
+            SceneManager.LoadScene("GameOverScene"); // Simply, if the player runs out of health, the game ends
         }
     }
 }

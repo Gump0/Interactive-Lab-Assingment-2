@@ -10,7 +10,7 @@ public class GameOverScript : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void RestartButton()
+    public void RestartButton() //If the start button is pushed, then the game shall begin
     {
         SceneManager.LoadScene("GameScene");
     }
