@@ -8,10 +8,14 @@ public class AIChase : MonoBehaviour
     public Rigidbody2D body;
     public GameObject Player;
     public float enemySpeed;
-    public float addPerSecond; 
-    public float currentEnemySpeed;
     private float distance;
     public bool zergFacingRight;
+
+    // Lerp Values
+    public float enemyStartSpeed; // Preset start velocity
+    public float enemyEndSpeed; // Preset end velocity
+    public float lerpDuration = 3f; // How often the lerp is updated per frame
+    public float elapsedTime; // Helps game determine how long the lerp fucntion has been running for on given enemy prefab
     void Awake()
     {
         body = gameObject.GetComponent<Rigidbody2D>();
@@ -28,10 +32,11 @@ public class AIChase : MonoBehaviour
        distance = Vector2.Distance(transform.position, Player.transform.position);
        Vector2 direction = Player.transform.position - transform.position;
 
-       currentEnemySpeed = enemySpeed + addPerSecond; // Adds increased value to 'currentEnemySpeed' and stores the value
+       transform.position = Vector2.MoveTowards(this.transform.position, Player.transform.position, enemySpeed * Time.deltaTime); // Moves the enemy towards the player and utlizes the increased 'currentEnemySpeed' value
+    
+        elapsedTime += Time.deltaTime;
+        float percentageComplete = elapsedTime / lerpDuration; // Adds velocity and inteperates the "percentage complete" of the lerp :P
 
-       transform.position = Vector2.MoveTowards(this.transform.position, Player.transform.position, currentEnemySpeed * Time.deltaTime); // Moves the enemy towards the player and utlizes the increased 'currentEnemySpeed' value
-
-       enemySpeed += addPerSecond * Time.deltaTime; // Increases the float value of 'enemySpeed' over time
+        enemySpeed = Mathf.Lerp(enemyStartSpeed, enemyEndSpeed, percentageComplete); // Lerp's between minimum enemy velocity and maxmimum enemy velocity and scales it over time using Time.deltaTime
     }
 }

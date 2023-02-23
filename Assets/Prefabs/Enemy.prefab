@@ -203,3 +203,7 @@ MonoBehaviour:
   addPerSecond: 1
   currentEnemySpeed: 2
   zergFacingRight: 0
+  enemyStartSpeed: 1
+  enemyEndSpeed: 18
+  lerpDuration: 5
+  elapsedTime: 0
